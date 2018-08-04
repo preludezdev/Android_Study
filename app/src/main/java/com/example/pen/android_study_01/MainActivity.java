@@ -53,7 +53,7 @@ public class MainActivity extends AppCompatActivity {
 
         initiateToken(); // 처음 앱 실행시 토큰 값 가져오기
 
-        // DB에 있는 데이터를 memos Arraylist에 넣는다. (리사이클러뷰 사용하기 위해)
+        // DB에 있는 데이터를 memos List에 넣는다. (리사이클러뷰 사용하기 위해)
         reloadDataFromDB();
         setRecyclerView();
 
