@@ -26,9 +26,9 @@ public class DetailMemoActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
         Memo memo = (Memo)intent.getSerializableExtra("memo");
-        tv4.setText(memo.getTitle());
+        tv4.setText(memo.getName());
         tv5.setText(memo.getContent());
-        tv6.setText(memo.getDetail());
+        tv6.setText(memo.getDetailContent());
 
         bt1 = findViewById(R.id.button1);
         bt1.setOnClickListener(new View.OnClickListener() {
@@ -37,7 +37,6 @@ public class DetailMemoActivity extends AppCompatActivity {
                 finish();
             }
         });
-
     }
 }
 

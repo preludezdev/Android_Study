@@ -3,7 +3,6 @@ package com.example.pen.android_study_01;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -12,8 +11,6 @@ public class AddMemoActivity extends AppCompatActivity {
 
     Button bt1, bt2;
     EditText et1,et2,et3;
-
-    MainActivity aActivity = (MainActivity)MainActivity.aActivity;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,18 +36,13 @@ public class AddMemoActivity extends AppCompatActivity {
         bt2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String title = "'"+et1.getText().toString()+"'";
+                String name = "'"+et1.getText().toString()+"'";
                 String content = "'"+et2.getText().toString()+"'";
-                String detail = "'"+et3.getText().toString()+"'";
+                String detailContent = "'"+et3.getText().toString()+"'";
+                DBHelper.getInstance(AddMemoActivity.this).insertMemo(name, content, detailContent);
 
-                C.db.execSQL("INSERT INTO myMemoTable (title,content,detail) VALUES(" + title + "," + content + "," + detail + ");");
-
-                Log.d(C.tag, "insert 됐음.");
-
-                //기존 메인엑티비티 날리고 새롭게 메인엑티비티 생성
-                aActivity.finish();
-                Intent intent = new Intent(getApplicationContext(),MainActivity.class);
-                startActivity(intent);
+                Intent addIntent = new Intent();
+                setResult(3000,addIntent);
                 finish(); //현재 액티비티(AddMemoActivity) 종료
             }
         });
